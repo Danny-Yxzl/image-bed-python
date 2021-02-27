@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block title %}图床免费版{% endblock %} {% block content %}
+<div>
+    {% if message %}
+    <div class="alert alert-info">{{ message }}</div>
+    {% endif %}
+    <form id="uploadFileForm" action="" enctype='multipart/form-data' method="POST" target="_blank">
+        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="uploadFile" name="file" value="选择文件">
+                <label id="uploadFileLabel" class="custom-file-label" for="uploadFile">选择文件</label>
+            </div>
+        </div>
+        <button id="uploadFileSubmit" type="submit" name="submit" class="btn btn-info btn-block" onclick="copy_text()">上传文件</button>
+    </form>
+    <br/>
+    <br/>
+</div>
+{% endblock %}

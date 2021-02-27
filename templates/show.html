@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %}CDN图片预览{% endblock %} {% block content %}
+<div>
+    <img style="width: 100%;" width="100%" src="{{ img_url }}" onclick="copyToClipboard('{{ img_url }}')" />
+    <center>
+        <br />
+        <h4>（点击图片可复制直链）</h4>
+    </center>
+</div>
+{% endblock %} {% block js %}
+
+<script>
+    function copyToClipboard(s) {
+        s = this.location.href.split("vip")[0] + s;
+        if (window.clipboardData) {
+            window.clipboardData.setData('text', s);
+        } else {
+            (function(s) {
+                document.oncopy = function(e) {
+                    e.clipboardData.setData('text', s);
+                    e.preventDefault();
+                    document.oncopy = null;
+                }
+            })(s);
+            document.execCommand('Copy');
+        }
+    }
+</script>
+
+{% endblock %}
